@@ -31,7 +31,6 @@ router.get('/api/currentus/:name', function(req, res, next) {
 });
 
 router.post('/api/rightanswer', function(req, res, next) {
-   console.log("aare"+req.body.username + req.body.score);
   User.updateOne({ 
     username: req.body.username },{$set: {score: ++ req.body.score}},
     function(err,docs){
@@ -43,7 +42,6 @@ router.post('/api/rightanswer', function(req, res, next) {
 });
 
 router.post('/api/wronganswer', function(req, res, next) {
-   console.log("aare"+req.body.username + req.body.wrongans);
   User.updateOne({ 
     username: req.body.username },{$set: {wrongans: ++ req.body.wrongans}},
     function(err,docs){
