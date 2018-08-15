@@ -129,6 +129,19 @@ auth.checklogin = function() {
  	if (response === '0') 
  	   { $location.path("/"); 
  		} 
+ 	else
+ 	{
+ 		$rootScope.cuser=response;
+ 		$http.get('/api/currentus/'+$rootScope.cuser.username)
+		.success(function(datae) {
+			$rootScope.currentUser = datae;
+			$rootScope.n=$rootScope.currentUser.score+$rootScope.currentUser.wrongans+1;
+		})
+		.error(function(data) {
+			console.log('Error: ' + data);
+		});
+
+	}
  		});
  }; 
  auth.isloggedin = function() {
